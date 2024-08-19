@@ -1,8 +1,7 @@
 import React from "react";
 import { Card, Table } from "antd";
 
-
-const history = [
+const dataSource = [
   {
     key: "1",
     subject: "Mike",
@@ -99,23 +98,22 @@ const columns = [
         style={record.type === "Send" ? { color: "red" } : { color: "green" }}
       >
         {record.type === "Send" ? "-" : "+"}
-        {record.amount} Matic
+        {record.amount} ETH
       </div>
     ),
   },
 ];
 
-function RecentActivity({}) {
-
+function RecentActivity({ history }) {
   return (
     <Card title="Recent Activity" style={{ width: "100%", minHeight: "663px" }}>
-      {history && 
-      <Table
-        dataSource={history}
-        columns={columns}
-        pagination={{ position: ["bottomCenter"], pageSize: 8 }}
-      />
-    }
+      {history && (
+        <Table
+          dataSource={history}
+          columns={columns}
+          pagination={{ position: ["bottomCenter"], pageSize: 8 }}
+        />
+      )}
     </Card>
   );
 }

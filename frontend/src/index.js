@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 import { configureChains, mainnet, WagmiConfig, createClient } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
-import { polygonMumbai } from '@wagmi/chains';
+import { sepolia } from "@wagmi/chains";
 
 const { provider, webSocketProvider } = configureChains(
-  [mainnet, polygonMumbai],
+  [mainnet, sepolia],
   [publicProvider()]
 );
 
@@ -17,12 +17,11 @@ const client = createClient({
   webSocketProvider,
 });
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <WagmiConfig client={client}>
-        <App />
+      <App />
     </WagmiConfig>
   </React.StrictMode>
 );
